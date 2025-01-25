@@ -2,17 +2,23 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
 import { selectFetchingLoading, selectProducts } from '../../store/slices/productsSlice.ts';
 import Product from '../../Components/Product/Product.tsx';
 import { useEffect } from 'react';
-import { getProducts } from '../../store/thunks/productsThunk.ts';
+import { getProducts, getProductsByCategory } from '../../store/thunks/productsThunk.ts';
 import Loader from '../../Components/UI/Loader/Loader.tsx';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector(selectProducts);
   const isLoading = useAppSelector(selectFetchingLoading);
+  const {categoryId} = useParams();
 
   useEffect(() => {
-    dispatch(getProducts());
-  }, [dispatch]);
+    if (categoryId) {
+      dispatch(getProductsByCategory(categoryId));
+    } else {
+      dispatch(getProducts());
+    }
+  }, [dispatch, categoryId]);
 
   return <>
     {
