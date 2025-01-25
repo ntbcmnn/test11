@@ -2,6 +2,8 @@ export interface IUser {
   _id: string;
   username: string;
   token: string;
+  display_name: string;
+  phone_number: string;
 }
 
 export interface RegisterResponse {
@@ -12,6 +14,8 @@ export interface RegisterResponse {
 export interface RegisterMutation {
   username: string;
   password: string;
+  display_name: string;
+  phone_number: string;
 }
 
 export interface LoginMutation {
