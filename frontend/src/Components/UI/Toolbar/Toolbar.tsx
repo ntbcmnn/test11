@@ -1,8 +1,8 @@
-import { NavLink } from "react-router-dom";
-import { useAppSelector } from "../../../app/hooks.ts";
-import { selectUser } from "../../../store/slices/usersSlice.ts";
-import UserMenu from "./UserMenu.tsx";
-import AnonymousMenu from "./AnonymousMenu.tsx";
+import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../../app/hooks.ts';
+import { selectUser } from '../../../store/slices/usersSlice.ts';
+import UserMenu from './UserMenu.tsx';
+import AnonymousMenu from './AnonymousMenu.tsx';
 
 const Toolbar = () => {
   const user = useAppSelector(selectUser);
@@ -14,10 +14,10 @@ const Toolbar = () => {
           className="navbar-brand text-white d-inline-flex align-items-center gap-2"
           to="/"
         >
-          Logo
+          Marketplace
         </NavLink>
         <div className="d-flex justify-content-end gap-3">
-          {user ? <UserMenu user={user} /> : <AnonymousMenu />}
+          {user ? <UserMenu user={user}/> : <AnonymousMenu/>}
         </div>
       </div>
     </nav>
