@@ -4,7 +4,7 @@ import {
   addProduct,
   deleteProduct,
   getProductById,
-  getProducts,
+  getProducts, getProductsByCategory,
 } from '../thunks/productsThunk.ts';
 import { RootState } from '../../app/store.ts';
 
@@ -67,18 +67,18 @@ export const productsSlice = createSlice({
         state.isFetching = false;
         state.error = true;
       })
-      // .addCase(getProductsByCategory.pending, (state) => {
-      //   state.isFetching = true;
-      //   state.error = false;
-      // })
-      // .addCase(getProductsByCategory.fulfilled, (state, {payload: productsRes}) => {
-      //   state.isFetching = false;
-      //   state.products = productsRes;
-      // })
-      // .addCase(getProductsByCategory.rejected, (state) => {
-      //   state.isFetching = false;
-      //   state.error = true;
-      // })
+      .addCase(getProductsByCategory.pending, (state) => {
+        state.isFetching = true;
+        state.error = false;
+      })
+      .addCase(getProductsByCategory.fulfilled, (state, {payload: productsRes}) => {
+        state.isFetching = false;
+        state.products = productsRes;
+      })
+      .addCase(getProductsByCategory.rejected, (state) => {
+        state.isFetching = false;
+        state.error = true;
+      })
       .addCase(deleteProduct.pending, (state) => {
         state.isDeleting = true;
         state.error = false;
