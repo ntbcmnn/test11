@@ -9,7 +9,7 @@ export interface UserFields {
 }
 
 export interface IProduct {
-    seller: Types.ObjectId;
+    user: Types.ObjectId;
     category: Types.ObjectId;
     title: string;
     description: string;

@@ -2,7 +2,7 @@ import mongoose, {HydratedDocument, Schema} from 'mongoose';
 import {IProduct} from '../types';
 
 const ProductSchema = new mongoose.Schema<HydratedDocument<IProduct>>({
-    seller: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: [true, "Seller is required."],

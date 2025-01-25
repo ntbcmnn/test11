@@ -24,7 +24,7 @@ productsRouter.post('/', imagesUpload.single('image'), async (req: express.Reque
 
     try {
         const product = new Product({
-            seller: user._id,
+            user: user._id,
             category,
             title: title.trim(),
             description: description.trim(),
@@ -46,7 +46,10 @@ productsRouter.post('/', imagesUpload.single('image'), async (req: express.Reque
 
 productsRouter.get('/', async (req: express.Request, res: express.Response, next) => {
     try {
-        const products = await Product.find();
+        const products = await Product
+            .find()
+            .populate("category", "-_id -__v")
+            .populate("user", "-_id -token -password -__v -username");
         res.send(products);
     } catch (e) {
         next(e);
@@ -65,7 +68,7 @@ productsRouter.get('/:id', async (req: express.Request, res: express.Response, n
         const product = await Product
             .findById(id)
             .populate("category", "-_id -__v")
-            .populate("seller", "-_id -token -password -__v");
+            .populate("user", "-_id -token -password -__v");
 
         if (!product) {
             res.status(404).send('Product not found.');
@@ -90,7 +93,7 @@ productsRouter.get('/category/:id', async (req: express.Request, res: express.Re
         const products = await Product
             .find({category: id})
             .populate("category", "-_id -__v")
-            .populate("seller", "-_id -token -password -__v");
+            .populate("user", "-_id -token -password -__v");
 
         if (products.length === 0) {
             res.status(404).send({error: 'No products found for this category.'});

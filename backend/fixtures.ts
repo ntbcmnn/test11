@@ -51,7 +51,7 @@ const run = async () => {
 
     await Product.create(
         {
-            seller: liam._id,
+            user: liam._id,
             category: hoodies._id,
             title: 'White basic hoodie',
             description: `Hoodie with "All we need is money" writing`,
@@ -59,7 +59,7 @@ const run = async () => {
             image: "fixtures/white_hoodie.jpg"
         },
         {
-            seller: liam._id,
+            user: liam._id,
             category: hoodies._id,
             title: 'Blue basic hoodie',
             description: `Basic hoodie with "Brooklyn" writing`,
@@ -67,7 +67,7 @@ const run = async () => {
             image: "fixtures/blue_hoodie.jpg"
         },
         {
-            seller: liam._id,
+            user: liam._id,
             category: sneakers._id,
             title: 'Retro sneakers',
             description: `Brown classical retro sneakers - Nike air jordan retro high`,
@@ -75,7 +75,7 @@ const run = async () => {
             image: "fixtures/brown_sneakers.jpg"
         },
         {
-            seller: liam._id,
+            user: liam._id,
             category: sneakers._id,
             title: 'Red high sneakers',
             description: `Red colored classical retro sneakers - Nike air jordan retro high`,
@@ -83,7 +83,7 @@ const run = async () => {
             image: "fixtures/red_sneakers.jpg"
         },
         {
-            seller: zayn._id,
+            user: zayn._id,
             category: jeans._id,
             title: 'Lightblue jeans',
             description: `Comfortable wide Y2K jeans`,
@@ -91,7 +91,7 @@ const run = async () => {
             image: "fixtures/light_jeans.jpg"
         },
         {
-            seller: zayn._id,
+            user: zayn._id,
             category: jeans._id,
             title: 'Darkblue jeans',
             description: `Comfortable wide Y2K jeans (darker color)`,
@@ -99,7 +99,7 @@ const run = async () => {
             image: "fixtures/dark_jeans.jpg"
         },
         {
-            seller: zayn._id,
+            user: zayn._id,
             category: t_shirts._id,
             title: 'Basic beige t-shirt',
             description: `T-Shirt with Japan-styled painting`,
@@ -107,7 +107,7 @@ const run = async () => {
             image: "fixtures/light_t_shirt.jpg"
         },
         {
-            seller: zayn._id,
+            user: zayn._id,
             category: t_shirts._id,
             title: 'Blue t-shirt',
             description: `T-Shirt with fingerprint painting`,
