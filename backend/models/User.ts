@@ -60,6 +60,38 @@ const UserSchema = new Schema<
     token: {
         type: String,
         required: true,
+    },
+    display_name: {
+        type: String,
+        required: [true, "Fill in the seller's name."],
+        validate:
+            {
+                validator: async function (value: string): Promise<boolean> {
+                    return value.trim().length > 0;
+                },
+                message: "Fill in the seller's name.",
+            },
+    },
+    phone_number: {
+        type: String,
+        unique: true,
+        required: [true, "Fill in the phone number."],
+        validate: [
+            {
+                validator: async function (value: string): Promise<boolean> {
+                    return value.trim().length > 0;
+                },
+                message: "Fill in the phone number.",
+            },
+            {
+                validator: async function (this: HydratedDocument<UserFields>, value: string): Promise<boolean> {
+                    if (!this.isModified('phone_number')) return true;
+                    const phone_number: UserFields | null = await User.findOne({phone_number: value});
+                    return !phone_number;
+                },
+                message: "This phone number is already taken.",
+            },
+        ],
     }
 });
 
