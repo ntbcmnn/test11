@@ -123,7 +123,20 @@ productsRouter.delete('/:id', async (req: express.Request, res: express.Response
     }
 
     try {
+        const product = await Product.findById(id);
+
+        if (!product) {
+            res.status(404).send({error: 'Product not found.'});
+            return;
+        }
+
+        if (product.user.toString() !== user._id.toString()) {
+            res.status(403).send({error: 'You are not allowed to delete this product.'});
+            return;
+        }
+
         await Product.findByIdAndDelete(id);
+
         res.send({message: 'Product deleted successfully.'});
     } catch (e) {
         next(e);
