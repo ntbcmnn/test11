@@ -11,3 +11,9 @@
   background-color: #212529 !important;
   color: #fff !important;
 }
+
+.category-link:hover,
+.category-link:active,
+.category-link:focus {
+  text-decoration: overline !important;
+}

@@ -29,7 +29,7 @@ const Toolbar = () => {
         <div className="d-flex align-items-center justify-content-between gap-3">
           {categories.map((category) => (
             <NavLink key={category._id} to={`products/category/${category._id}`}
-                     className="text-decoration-none menu-item text-white">{category.name}</NavLink>
+                     className="text-decoration-none text-white category-link">{category.name}</NavLink>
           ))}
         </div>
 
