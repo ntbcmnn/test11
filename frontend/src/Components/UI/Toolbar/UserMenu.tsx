@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IUser } from '../../../types';
 import { useAppDispatch } from '../../../app/hooks.ts';
 import { logout } from '../../../store/thunks/usersThunk.ts';
@@ -39,6 +39,7 @@ const UserMenu: React.FC<Props> = ({user}) => {
           <button className="dropdown-item btn btn-dark" onClick={handleLogOut}>
             Log out
           </button>
+          <NavLink to="/add-product" className="dropdown-item text-decoration-none btn btn-dark">Add product</NavLink>
         </div>
       </div>
     </div>
