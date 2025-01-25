@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { IUser } from "../../../types";
-import { useAppDispatch } from "../../../app/hooks.ts";
-import { logout } from "../../../store/thunks/usersThunk.ts";
-import { unsetUser } from "../../../store/slices/usersSlice.ts";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IUser } from '../../../types';
+import { useAppDispatch } from '../../../app/hooks.ts';
+import { logout } from '../../../store/thunks/usersThunk.ts';
+import { unsetUser } from '../../../store/slices/usersSlice.ts';
 
 interface Props {
   user: IUser;
 }
 
-const UserMenu: React.FC<Props> = ({ user }) => {
+const UserMenu: React.FC<Props> = ({user}) => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const UserMenu: React.FC<Props> = ({ user }) => {
   const handleLogOut = () => {
     dispatch(logout());
     dispatch(unsetUser());
-    navigate("/");
+    navigate('/');
   };
 
   return (
@@ -33,9 +33,9 @@ const UserMenu: React.FC<Props> = ({ user }) => {
           onClick={toggleMenu}
         >
           <i className="bi bi-person-circle"></i>
-          {user.username}
+          {user.display_name}
         </button>
-        <div className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+        <div className={`dropdown-menu ${isOpen ? 'show' : ''}`}>
           <button className="dropdown-item btn btn-dark" onClick={handleLogOut}>
             Log out
           </button>
