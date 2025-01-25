@@ -4,3 +4,10 @@
   font-family: "Montserrat", serif;
   font-optical-sizing: auto;
 }
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item.active {
+  background-color: #212529 !important;
+  color: #fff !important;
+}
